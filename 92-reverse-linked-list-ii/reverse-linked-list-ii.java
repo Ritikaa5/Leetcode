@@ -13,7 +13,7 @@ class Solution {
          if (head == null || left == right) {
             return head;
         }
-
+                                                 
         ListNode dummy = new ListNode(0);
         dummy.next = head;
 
@@ -22,7 +22,7 @@ class Solution {
         // Move prev to node before left
         for (int i = 1; i < left; i++) {
             prev = prev.next;
-        }
+        }   
 
         ListNode curr = prev.next;
 
