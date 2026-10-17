@@ -47,7 +47,7 @@ Example:
 ✅ Improving time & space complexity understanding
 
 ## 🔗 LeetCode Profile
-(Add your LeetCode profile link here)
+https://github.com/Ritikaa5
 
 ---
 ⭐ Feel free to explore the repository!
