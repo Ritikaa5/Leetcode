@@ -27,6 +27,8 @@ class Solution {
 
             slow = slow.next;
             fast = fast.next.next;
+
+            
         }        // STEP 2: Second half ko reverse karo
         // =====================================
 
