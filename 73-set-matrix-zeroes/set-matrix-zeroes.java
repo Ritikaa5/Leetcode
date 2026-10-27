@@ -1,38 +1,68 @@
 class Solution {
     public void setZeroes(int[][] matrix) {
 
-         
-        int rows = matrix.length;
-        int cols = matrix[0].length;
+        // Matrix mein total rows aur columns
+        int m = matrix.length;
+        int n = matrix[0].length;
 
-        // Arrays to mark which rows and columns should become zero
-        int[] row = new int[rows];
-        int[] col = new int[cols];
+        // Check karo ki first row mein pehle se koi zero hai ya nahi
+        boolean firstRowZero = false;
 
-        // Step 1: Mark rows and columns containing original zeroes
-        for (int i = 0; i < rows; i++) {
+        // Check karo ki first column mein pehle se koi zero hai ya nahi
+        boolean firstColZero = false;
 
-            for (int j = 0; j < cols; j++) {
+        // First row ko check karo
+        for (int j = 0; j < n; j++) {
+            if (matrix[0][j] == 0) {
+                firstRowZero = true;
+            }
+        }
 
+        // First column ko check karo
+        for (int i = 0; i < m; i++) {
+            if (matrix[i][0] == 0) {
+                firstColZero = true;
+            }
+        }
+
+        // Baaki matrix mein zero dhoondo
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+
+                // Agar current element zero hai
                 if (matrix[i][j] == 0) {
 
-                    row[i] = 1;
-                    col[j] = 1;
+                    // Us row ke first cell ko marker banao
+                    matrix[i][0] = 0;
 
+                    // Us column ke first cell ko marker banao
+                    matrix[0][j] = 0;
                 }
             }
         }
 
-        // Step 2: Convert marked rows and columns to zero
-        for (int i = 0; i < rows; i++) {
+        // Markers ke basis par rows aur columns zero karo
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
 
-            for (int j = 0; j < cols; j++) {
-
-                if (row[i] == 1 || col[j] == 1) {
-
+                // Row ya column marker zero hai toh current cell zero karo
+                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
                     matrix[i][j] = 0;
-
                 }
+            }
+        }
+
+        // Agar first row mein pehle zero tha toh poori first row zero karo
+        if (firstRowZero) {
+            for (int j = 0; j < n; j++) {
+                matrix[0][j] = 0;
+            }
+        }
+
+        // Agar first column mein pehle zero tha toh poora first column zero karo
+        if (firstColZero) {
+            for (int i = 0; i < m; i++) {
+                matrix[i][0] = 0;
             }
         }
     }
